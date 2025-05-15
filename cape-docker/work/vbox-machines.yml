@@ -1,0 +1,4 @@
+cuckoo1:
+  name: cuckoo1
+  ip: 192.168.56.101
+  status: powered_off
