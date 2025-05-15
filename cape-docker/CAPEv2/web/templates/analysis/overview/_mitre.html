@@ -1,0 +1,30 @@
+<div class="card-header">
+    <center><a class="accordion-toggle" data-toggle="collapse" aria-expanded="false" href="#mitre_attack"><i class="fas fa-tasks"></i> Mitre ATT&CK</a></center>
+</div>
+<div id="mitre_attack" class="collapse">
+    <table class="table table-bordered table-striped" style="table-layout: fixed;">
+        <tbody>
+            <tr>
+            {% for category in analysis.mitre_attck %}
+                <th>{{ category }}</th>
+            {% endfor %}
+            </tr>
+            {% for category, ttps in analysis.mitre_attck.items %}
+                <td>
+                    <ul style="padding-left: 1rem">
+                        {% for ttp in ttps %}
+                            <li style="margin-bottom: 1rem">
+                                <a href="https://attack.mitre.org/techniques/{{ttp.t_id}}/" title="{{ttp.description}}"> {{ttp.t_id}}</a> - {{ ttp.ttp_name }}
+                                <ul>
+                                {% for signature in ttp.signature %}
+                                    <li>{{signature}}</li>
+                                {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
